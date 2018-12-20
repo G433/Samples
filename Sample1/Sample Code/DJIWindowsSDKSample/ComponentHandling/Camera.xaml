@@ -1,0 +1,147 @@
+﻿<Page
+    x:Class="DJIWindowsSDKSample.ComponentHandling.Camera"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Style="{StaticResource TitleTextBlockStyle}">Camera Photo</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Taking Photo:</TextBlock>
+                <TextBlock Text="{Binding IsCurrentlyTakingPhoto}" FontSize="15" Margin="5,1,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Photo Interval (Sec):</TextBlock>
+                <TextBlock Text="{Binding PhotoIntervalShootSettingsInterval}" FontSize="15" Margin="5,1,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Photo Interval Count:</TextBlock>
+                <TextBlock Text="{Binding PhotoIntervalShootSettingsCount}" FontSize="15" Margin="5,1,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Shoot Photo Mode:</TextBlock>
+                <TextBlock Text="{Binding ShootPhotoMode}" FontSize="15" Margin="5,1,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Camera Work Mode:</TextBlock>
+                <TextBlock Text="{Binding CameraWorkMode}" FontSize="15" Margin="5,1,5,5"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5,1,5,5" Command="{Binding StartShootPhoto}">Start Shoot Photo</Button>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding ShootPhotoStatus}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5,1,5,5" Command="{Binding StopShootPhoto}">Stop Shoot Photo</Button>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding StopShootPhotoStatus}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Button Margin="5,1,5,5" Command="{Binding SetPhotoIntervalShootSettings}">Set Photo Interval</Button>
+                <TextBox HorizontalAlignment="Left" Margin="3,1,0,0" Width="100" PlaceholderText="Interval (Sec)" Text="{Binding PhotoIntervalShootInterval ,Mode=TwoWay}" ></TextBox>
+                <TextBox HorizontalAlignment="Left" Margin="3,1,0,0" Width="100" PlaceholderText="Shoot Count" Text="{Binding PhotoIntervalShootCount ,Mode=TwoWay}"></TextBox>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding PhotoIntervalShootStatus}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left">Set Photo Mode</TextBlock>
+                <ComboBox SelectedIndex="0" SelectionChanged="ShootPhotoModeComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="3,1,0,0" ItemsSource="{x:Bind CameraShootPhotoModes}"></ComboBox>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding SetShootPhotoModeStatus}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left">Set Camera Mode</TextBlock>
+                <ComboBox SelectedIndex="0" SelectionChanged="CameraWorkModeComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="3,1,0,0" ItemsSource="{x:Bind CameraWorkModes}"></ComboBox>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding SetCameraWorkModeStatus}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Style="{StaticResource TitleTextBlockStyle}">Video Recording</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Recording Video:</TextBlock>
+                <TextBlock Text="{Binding IsRecordingVideo}" FontSize="15" Margin="5,1,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Recording Time:</TextBlock>
+                <TextBlock Text="{Binding RecordingTime}" FontSize="15" Margin="5,1,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Video Resolution:</TextBlock>
+                <TextBlock Text="{Binding VideoResolution}" FontSize="15" Margin="5,1,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Video Frame Rate:</TextBlock>
+                <TextBlock Text="{Binding VideoFrameRate}" FontSize="15" Margin="5,1,5,5"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5,1,5,5" Command="{Binding StartRecord}">Start Recording</Button>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding RecordStatus}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5,1,5,5" Command="{Binding StopRecord}">Stop Record</Button>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding StopRecordStatus}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Settings and Runtime:</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Latest File created info:</TextBlock>
+                <TextBlock Text="{Binding IsCurrentlyTakingPhoto}" FontSize="15" Margin="5,1,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left">Media File Format</TextBlock>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding MediaFileFormat}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left">Media File Size</TextBlock>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding MediaFileSize}"></TextBlock>
+            </StackPanel>
+           <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left">Media File Index</TextBlock>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding MediaFileIndex}"></TextBlock>
+            </StackPanel>
+             <!--<StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left">Media File TimeCreated</TextBlock>
+                <TextBlock Margin="5,1,5,5" HorizontalAlignment="Left" Text="{Binding MediaFileTimeCreated}"></TextBlock>
+            </StackPanel>-->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">SD Card Info:</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Remaining Space:</TextBlock>
+                <TextBlock Text="{Binding SdCardRemainSpace}" FontSize="15" Margin="5,1,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Available Photo Count:</TextBlock>
+                <TextBlock Text="{Binding SdCardAvailablePhoto}" FontSize="15" Margin="5,1,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">Available Video Duration:</TextBlock>
+                <TextBlock Text="{Binding SdCardAvailableVideoDuration}" FontSize="15" Margin="5,1,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,1,5,5">State:</TextBlock>
+                <TextBlock Text="{Binding CameraSdCardState}" FontSize="15" Margin="5,1,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

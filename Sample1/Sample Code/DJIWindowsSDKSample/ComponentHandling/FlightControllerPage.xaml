@@ -1,0 +1,222 @@
+﻿<Page
+    x:Class="DJIWindowsSDKSample.ComponentHandling.FlightControllerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Style="{StaticResource TitleTextBlockStyle}">RealTime Flight Info</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Flight Time (Sec):</TextBlock>
+                <TextBlock Text="{Binding FlightTimeInSeconds}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Remaining Flight Time (Sec):</TextBlock>
+                <TextBlock Text="{Binding RemainingFlightTime}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Location Latitude:</TextBlock>
+                <TextBlock Text="{Binding AircraftLocationLatitude}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Location Longitude:</TextBlock>
+                <TextBlock Text="{Binding AircraftLocationLongitude}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Aircraft Altitude:</TextBlock>
+                <TextBlock Text="{Binding Altitude}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Attitude Pitch:</TextBlock>
+                <TextBlock Text="{Binding AttitudePitch}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Attitude Roll:</TextBlock>
+                <TextBlock Text="{Binding AttitudeRoll}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Attitude Yaw:</TextBlock>
+                <TextBlock Text="{Binding AttitudeYaw}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Velocity X:</TextBlock>
+                <TextBlock Text="{Binding VelocityX}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Velocity Y:</TextBlock>
+                <TextBlock Text="{Binding VelocityY}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Velocity Z:</TextBlock>
+                <TextBlock Text="{Binding VelocityZ}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Satellite Count:</TextBlock>
+                <TextBlock Text="{Binding SatelliteCount}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">GPS Signal Level:</TextBlock>
+                <TextBlock Text="{Binding GpsSignalLevel}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Are Motors On:</TextBlock>
+                <TextBlock Text="{Binding AreMotorsOn}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">IMU Warming Up:</TextBlock>
+                <TextBlock Text="{Binding IsImuWarmingUp}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Is Flying:</TextBlock>
+                <TextBlock Text="{Binding IsFlying}" FontSize="15" Margin="5,5,5,5"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Style="{StaticResource TitleTextBlockStyle}">RealTime Flight Info 2</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Time Needed To Land:</TextBlock>
+                <TextBlock Text="{Binding TimeNeededToLand}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Time Needed To Go Home:</TextBlock>
+                <TextBlock Text="{Binding TimeNeededToGoHome}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Should Go Home:</TextBlock>
+                <TextBlock Text="{Binding ShouldGoHome}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Smart RTH Count down:</TextBlock>
+                <TextBlock Text="{Binding SmartRthCountdown}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">RTH By Low Battery Voltage:</TextBlock>
+                <TextBlock Text="{Binding RequireGoHomeByLowBatteryVoltage}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">RTH By Smart Battery Percent:</TextBlock>
+                <TextBlock Text="{Binding RequireGoHomeBySmartBatteryPercent}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Home Location Latitude:</TextBlock>
+                <TextBlock Text="{Binding HomeLocationLatitude}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Home Location Longitude:</TextBlock>
+                <TextBlock Text="{Binding HomeLocationLongitude}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Auto RTH Reason:</TextBlock>
+                <TextBlock Text="{Binding AutoRthReason}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Go Home State:</TextBlock>
+                <TextBlock Text="{Binding GoHomeState}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Style="{StaticResource TitleTextBlockStyle}">Warnings</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Has Not Enough Force:</TextBlock>
+                <TextBlock Text="{Binding HasNotEnoughForce}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Wind Warning:</TextBlock>
+                <TextBlock Text="{Binding WindWarning}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">GPS Mode Failure Reason:</TextBlock>
+                <TextBlock Text="{Binding GpsModeFailureReason}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">ESC Has Error:</TextBlock>
+                <TextBlock Text="{Binding EscHasError}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">ESC Disconnected:</TextBlock>
+                <TextBlock Text="{Binding EscDisconnected}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Compass Has Error:</TextBlock>
+                <TextBlock Text="{Binding CompassHasError}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Compass Install Error:</TextBlock>
+                <TextBlock Text="{Binding CompassInstallError}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Motor Start Failure:</TextBlock>
+                <TextBlock Text="{Binding MotorStartFailureError}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Is Motor Stuck:</TextBlock>
+                <TextBlock Text="{Binding IsMotorStuck}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">No Propeller Installed:</TextBlock>
+                <TextBlock Text="{Binding NoPropellerInstalled}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Margin="5,5,5,5">Has Ice On Propellers:</TextBlock>
+                <TextBlock Text="{Binding HasIceOnPropellers}" FontSize="15" Margin="5,5,5,5" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="0,8,0,0" Command="{Binding StartTakeoff}" Content="Start Auto Takeoff" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding TakeOffStatus}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="0,8,0,0" Command="{Binding StartAutoLanding}" Content="Start Auto Landing" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
+                <TextBlock Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding AutoLandStatus}"></TextBlock>
+                <Button Margin="0,8,0,0" Command="{Binding StopAutoLanding}" Content="Stop Auto Landing" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
+                <TextBlock Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding AutoLandStopStatus}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="0,8,0,0" Command="{Binding StartGoHome}" Content="Start RTH" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding StartGoHomeStatus}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="0,8,0,0" Command="{Binding StopGoHome}" Content="Stop RTH" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding StopGoHomeStatus}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="0,8,0,0" Command="{Binding GetAutoRthReason}" Content="Get Auto RTH Reason" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding GetAutoRthReasonResult}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="0,8,0,0" Command="{Binding GetFlightMode}" Content="Get Flight Mode" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding FlightMode}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="0,8,0,0" Command="{Binding SetEsc}" Content="SetEscBeep" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding EscBeepEnabled, Mode=TwoWay}" PlaceholderText="Enter false or true"></TextBox>
+                <TextBlock Margin="8,8,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding EscBeepChangeStatus}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

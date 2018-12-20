@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Sample Code",
+    "\\Sample Code\\DJIWindowsSDKSample",
+    "\\Sample Code\\DJIWindowsSDKSample\\Battery",
+    "\\Sample Code\\DJIWindowsSDKSample\\ComponentHandling",
+    "\\Sample Code\\DJIWindowsSDKSample\\FPV",
+    "\\Sample Code\\DJIWindowsSDKSample\\obj",
+    "\\Sample Code\\DJIWindowsSDKSample\\obj\\x86",
+    "\\Sample Code\\DJIWindowsSDKSample\\obj\\x86\\Debug",
+    "\\Sample Code\\DJIWindowsSDKSample\\ViewModels",
+    "\\Sample Code\\DJIWindowsSDKSample\\WaypointHandling"
+  ],
+  "SelectedNode": "\\Sample Code\\DJIWindowsSDKSample\\ViewModels\\BatteryViewModel.cs",
+  "PreviewInSolutionExplorer": false
+}
