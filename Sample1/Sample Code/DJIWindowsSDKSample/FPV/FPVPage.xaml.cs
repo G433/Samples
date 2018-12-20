@@ -1,6 +1,7 @@
 ﻿using DJI.WindowsSDK;
 using System;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media.Imaging;
@@ -181,8 +182,9 @@ namespace DJIWindowsSDKSample.FPV
 
         private async void Land_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            UpdateJoyStick(); //hover
+            await Task.Delay(2000).ConfigureAwait(true);
             StatusTextBlock.Text = await _remoteControllerViewModelModel.AutoLandAsync().ConfigureAwait(true);
-            UpdateJoyStickCachedValues();
         }
 
         private void UpdateJoyStick(float throttle = 0, float roll = 0, float pitch = 0, float yaw = 0)
