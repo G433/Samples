@@ -117,6 +117,7 @@
     <Compile Include="FPV\FPVPage.xaml.cs">
       <DependentUpon>FPVPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -137,11 +138,14 @@
     <Compile Include="WaypointHandling\WaypointMissionPage.xaml.cs">
       <DependentUpon>WaypointMissionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WinML\MnistDigitRecognitionModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="WinML\MLReadMe.txt" />
+    <Content Include="WinML\MnistDigitRecognition.onnx" />
     <None Include="DJIWindowsSDKSample_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

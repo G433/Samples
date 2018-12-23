@@ -17,7 +17,7 @@ namespace DJIWindowsSDKSample.FPV
         public WriteableBitmap VideoSource;
         private byte[] _decodedDataBuf;
         private readonly object _bufLock = new object();
-        private readonly VirtualRemoteControllerViewModel _remoteControllerViewModelModel = new VirtualRemoteControllerViewModel();
+        private readonly FpvViewModel _fpvViewModel = new FpvViewModel();
         private float _yaw;
         private float _roll;
         private float _pitch;
@@ -26,7 +26,7 @@ namespace DJIWindowsSDKSample.FPV
         public FPVPage()
         {
             InitializeComponent();
-            DataContext = _remoteControllerViewModelModel;
+            DataContext = _fpvViewModel;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -81,6 +81,9 @@ namespace DJIWindowsSDKSample.FPV
                     data.CopyTo(_decodedDataBuf.AsBuffer());
                 }
             }
+
+           await _fpvViewModel.AnalyzeFrameAsync(data.AsBuffer(), (uint)width, (uint)height).ConfigureAwait(false);
+
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 if (VideoSource == null || VideoSource.PixelWidth != width || VideoSource.PixelHeight != height)
@@ -102,7 +105,7 @@ namespace DJIWindowsSDKSample.FPV
             if (sender is Slider slider)
             {
                 _throttle = (float)slider.Value;
-                _remoteControllerViewModelModel.UpdateJoystick(_throttle, _roll, _pitch, _yaw);
+                _fpvViewModel.UpdateJoystick(_throttle, _roll, _pitch, _yaw);
             }
         }
 
@@ -111,7 +114,7 @@ namespace DJIWindowsSDKSample.FPV
             if (sender is Slider slider)
             {
                 _roll = (float)slider.Value;
-                _remoteControllerViewModelModel.UpdateJoystick(_throttle, _roll, _pitch, _yaw);
+                _fpvViewModel.UpdateJoystick(_throttle, _roll, _pitch, _yaw);
             }
         }
 
@@ -120,7 +123,7 @@ namespace DJIWindowsSDKSample.FPV
             if (sender is Slider slider)
             {
                 _pitch = (float)slider.Value;
-                _remoteControllerViewModelModel.UpdateJoystick(_throttle, _roll, _pitch, _yaw);
+                _fpvViewModel.UpdateJoystick(_throttle, _roll, _pitch, _yaw);
             }
         }
 
@@ -129,7 +132,7 @@ namespace DJIWindowsSDKSample.FPV
             if (sender is Slider slider)
             {
                 _yaw = (float)slider.Value;
-                _remoteControllerViewModelModel.UpdateJoystick(_throttle, _roll, _pitch, _yaw);
+                _fpvViewModel.UpdateJoystick(_throttle, _roll, _pitch, _yaw);
             }
         }
 
@@ -146,37 +149,37 @@ namespace DJIWindowsSDKSample.FPV
 
         private void ForwardButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            UpdateJoyStick(throttle:(float) 0.0, roll: 0, pitch: (float)0.4, yaw: 0);
+            UpdateJoyStick(throttle:0, roll: 0, pitch: 0.4f, yaw: 0);
         }
 
         private void BackwardButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            UpdateJoyStick(throttle: (float)0.0, roll: 0, pitch: (float)-0.4, yaw: 0);
+            UpdateJoyStick(throttle: 0, roll: 0, pitch: -0.4f, yaw: 0);
         }
 
         private void RightButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            UpdateJoyStick(throttle: 0, roll: 0, pitch: 0, yaw: (float)0.4); //yaw and roll mixed change when sdk will be fixed
+            UpdateJoyStick(throttle: 0, roll: 0, pitch: 0, yaw: 0.4f); //yaw and roll mixed change when sdk will be fixed
         }
 
         private void LeftButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            UpdateJoyStick(throttle: 0, roll: 0, pitch: 0, yaw: (float)-0.4); //yaw and roll mixed change when sdk will be fixed
+            UpdateJoyStick(throttle: 0, roll: 0, pitch: 0, yaw: -0.4f); //yaw and roll mixed change when sdk will be fixed
         }
 
         private void RightYawButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            UpdateJoyStick(throttle: (float)0.0, roll: (float)0.4, pitch: 0, yaw: 0); //yaw and roll mixed change when sdk will be fixed
+            UpdateJoyStick(throttle: 0, roll: 0.4f, pitch: 0, yaw: 0); //yaw and roll mixed change when sdk will be fixed
         }
 
         private void LeftYawButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            UpdateJoyStick(throttle: (float)0.0, roll: (float)-0.4, pitch: 0, yaw: 0); //yaw and roll mixed change when sdk will be fixed
+            UpdateJoyStick(throttle: 0, roll: -0.4f, pitch: 0, yaw: 0); //yaw and roll mixed change when sdk will be fixed
         }
 
         private async void TakeOff_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            StatusTextBlock.Text = await _remoteControllerViewModelModel.AutoTakeOffAsync().ConfigureAwait(true);
+            StatusTextBlock.Text = await _fpvViewModel.AutoTakeOffAsync().ConfigureAwait(true);
             UpdateJoyStickCachedValues();
         }
 
@@ -184,12 +187,12 @@ namespace DJIWindowsSDKSample.FPV
         {
             UpdateJoyStick(); //hover
             await Task.Delay(2000).ConfigureAwait(true);
-            StatusTextBlock.Text = await _remoteControllerViewModelModel.AutoLandAsync().ConfigureAwait(true);
+            StatusTextBlock.Text = await _fpvViewModel.AutoLandAsync().ConfigureAwait(true);
         }
 
         private void UpdateJoyStick(float throttle = 0, float roll = 0, float pitch = 0, float yaw = 0)
         {
-            _remoteControllerViewModelModel.UpdateJoystick(throttle, roll, pitch, yaw);
+            _fpvViewModel.UpdateJoystick(throttle, roll, pitch, yaw);
             UpdateJoyStickCachedValues(throttle, roll, pitch, yaw);
         }
 
