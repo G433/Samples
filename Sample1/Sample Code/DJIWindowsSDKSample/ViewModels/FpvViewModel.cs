@@ -37,6 +37,7 @@ namespace DJIWindowsSDKSample.ViewModels
                     return;
                 }
 
+                //todo check the ConfigureAwait if should be true or false
                 //Evaluate the model
                 _modelOutput = await _modelGen.EvaluateAsync(_modelInput).ConfigureAwait(true);
 

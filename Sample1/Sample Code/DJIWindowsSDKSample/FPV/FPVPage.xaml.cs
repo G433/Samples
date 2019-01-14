@@ -82,7 +82,8 @@ namespace DJIWindowsSDKSample.FPV
                 }
             }
 
-           await _fpvViewModel.AnalyzeFrameAsync(data.AsBuffer(), (uint)width, (uint)height).ConfigureAwait(false);
+           //todo: open this when want machine learning..
+           //await _fpvViewModel.AnalyzeFrameAsync(data.AsBuffer(), (uint)width, (uint)height).ConfigureAwait(false);
 
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
